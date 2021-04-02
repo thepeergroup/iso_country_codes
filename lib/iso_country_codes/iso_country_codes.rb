@@ -42,6 +42,7 @@ class IsoCountryCodes # :nodoc:
       instances = all.select { |c| c.name.to_s.match(/^#{Regexp.escape(str)}/i) } if instances.empty?
       instances = all.select { |c| c.name.to_s.match(/#{Regexp.escape(str)}/i) } if instances.empty?
       instances = all.select { |c| word_set(c.name) == word_set(str) } if instances.empty?
+      instances = all.select { |c| c if c.search_terms && (word_set(c.search_terms) & word_set(str)).any? } if instances.empty?
 
       return fallback.call "No ISO 3166-1 codes could be found searching with name '#{str}'." if instances.empty?
 

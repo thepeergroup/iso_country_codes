@@ -313,6 +313,7 @@ class IsoCountryCodes
       self.name    = %q{Congo (Democratic Republic of the)}
       self.alpha2  = %q{CD}
       self.alpha3  = %q{COD}
+      self.search_terms = %q{DRC}
     end
     class COK < Code #:nodoc:
       self.numeric = %q{184}
@@ -331,6 +332,7 @@ class IsoCountryCodes
       self.name    = %q{Côte d'Ivoire}
       self.alpha2  = %q{CI}
       self.alpha3  = %q{CIV}
+      self.search_terms = %q{Cote d’Ivoire Ivory Coast}
     end
     class HRV < Code #:nodoc:
       self.numeric = %q{191}
@@ -733,6 +735,7 @@ class IsoCountryCodes
       self.name    = %q{Lao People's Democratic Republic}
       self.alpha2  = %q{LA}
       self.alpha3  = %q{LAO}
+      self.search_terms = %q{Laos}
     end
     class LVA < Code #:nodoc:
       self.numeric = %q{428}
@@ -1282,9 +1285,10 @@ class IsoCountryCodes
     end
     class SWZ < Code #:nodoc:
       self.numeric = %q{748}
-      self.name    = %q{Swaziland}
+      self.name    = %q{Eswatini}
       self.alpha2  = %q{SZ}
       self.alpha3  = %q{SWZ}
+      self.search_terms = %q{Swaziland}
     end
     class SWE < Code #:nodoc:
       self.numeric = %q{752}

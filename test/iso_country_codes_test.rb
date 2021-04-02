@@ -113,6 +113,47 @@ class TestIsoCountryCodes < Test::Unit::TestCase
     )
   end
 
+  def test_search_edge_case_congo
+    [
+      "DRC (Congo)",
+      "DEMOCRATIC REPUBLIC OF THE CONGO",
+      "CONGO (DEMOCRATIC REPUBLIC OF THE)",
+    ].each do |variant|
+      assert_equal(
+        [IsoCountryCodes::Code::COD.instance],
+        IsoCountryCodes.search_by_name(variant)
+      )
+    end
+
+    assert_equal(
+      [IsoCountryCodes::Code::COG.instance],
+      IsoCountryCodes.search_by_name("CONGO")
+    )
+  end
+
+  def test_search_edge_case_cote_divoire
+    [                  # Circonflex Apostrophe
+      "Côte d’Ivoire", # Y          Y
+      "Côte d'Ivoire", # Y          N
+      "Cote d’Ivoire", # N          Y
+      "Cote d'Ivoire", # N          N
+
+      "Ivory Coast",   # Anglicized
+    ].each do |variant|
+      assert_equal(
+        [IsoCountryCodes::Code::CIV.instance],
+        IsoCountryCodes.search_by_name(variant)
+      )
+    end
+  end
+
+  def test_recent_name_change_eswatini
+    assert_equal(
+      [IsoCountryCodes::Code::SWZ.instance],
+      IsoCountryCodes.search_by_name("Swaziland")
+    )
+  end
+
   def test_search_by_currency_lowercase
     assert_equal([
       IsoCountryCodes::Code::AUS.instance,

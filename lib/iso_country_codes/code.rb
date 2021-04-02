@@ -48,8 +48,12 @@ class IsoCountryCodes
       self.class.iban
     end
 
+    def search_terms
+      self.class.search_terms
+    end
+
     class << self
-      attr_accessor :name, :numeric, :alpha2, :alpha3, :calling, :continent, :main_currency
+      attr_accessor :name, :numeric, :alpha2, :alpha3, :calling, :continent, :main_currency, :search_terms
       attr_writer :currencies, :iban
       alias_method :currency, :main_currency
       alias_method :calling_code, :calling
