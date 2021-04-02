@@ -1454,9 +1454,10 @@ class IsoCountryCodes
     end
     class VNM < Code #:nodoc:
       self.numeric = %q{704}
-      self.name    = %q{Viet Nam}
+      self.name    = %q{Vietnam}
       self.alpha2  = %q{VN}
       self.alpha3  = %q{VNM}
+      self.search_terms = %q{Viet Nam}
     end
     class VGB < Code #:nodoc:
       self.numeric = %q{092}
