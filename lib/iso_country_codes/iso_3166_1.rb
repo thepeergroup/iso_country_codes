@@ -567,6 +567,7 @@ class IsoCountryCodes
       self.name    = %q{Guinea-Bissau}
       self.alpha2  = %q{GW}
       self.alpha3  = %q{GNB}
+      self.search_terms = %q{ GuineaBissau Guinea Bissau }
     end
     class GUY < Code #:nodoc:
       self.numeric = %q{328}
@@ -1114,42 +1115,49 @@ class IsoCountryCodes
       self.name    = %q{Saint Barthélemy}
       self.alpha2  = %q{BL}
       self.alpha3  = %q{BLM}
+      self.search_terms = %{St St.}
     end
     class SHN < Code #:nodoc:
       self.numeric = %q{654}
       self.name    = %q{Saint Helena, Ascension and Tristan da Cunha}
       self.alpha2  = %q{SH}
       self.alpha3  = %q{SHN}
+      self.search_terms = %{St St.}
     end
     class KNA < Code #:nodoc:
       self.numeric = %q{659}
       self.name    = %q{Saint Kitts and Nevis}
       self.alpha2  = %q{KN}
       self.alpha3  = %q{KNA}
+      self.search_terms = %{St St.}
     end
     class LCA < Code #:nodoc:
       self.numeric = %q{662}
       self.name    = %q{Saint Lucia}
       self.alpha2  = %q{LC}
       self.alpha3  = %q{LCA}
+      self.search_terms = %{St St.}
     end
     class MAF < Code #:nodoc:
       self.numeric = %q{663}
       self.name    = %q{Saint Martin (French part)}
       self.alpha2  = %q{MF}
       self.alpha3  = %q{MAF}
+      self.search_terms = %{St St.}
     end
     class SPM < Code #:nodoc:
       self.numeric = %q{666}
       self.name    = %q{Saint Pierre and Miquelon}
       self.alpha2  = %q{PM}
       self.alpha3  = %q{SPM}
+      self.search_terms = %{St St.}
     end
     class VCT < Code #:nodoc:
       self.numeric = %q{670}
       self.name    = %q{Saint Vincent and the Grenadines}
       self.alpha2  = %q{VC}
       self.alpha3  = %q{VCT}
+      self.search_terms = %{St St. Vincent}
     end
     class WSM < Code #:nodoc:
       self.numeric = %q{882}

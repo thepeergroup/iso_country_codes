@@ -1,3 +1,4 @@
+require 'byebug'
 class IsoCountryCodes # :nodoc:
   class UnknownCodeError < StandardError; end
 
@@ -42,7 +43,7 @@ class IsoCountryCodes # :nodoc:
       instances = all.select { |c| c.name.to_s.match(/^#{Regexp.escape(str)}/i) } if instances.empty?
       instances = all.select { |c| c.name.to_s.match(/#{Regexp.escape(str)}/i) } if instances.empty?
       instances = all.select { |c| word_set(c.name) == word_set(str) } if instances.empty?
-      instances = all.select { |c| c if c.search_terms && (word_set(c.search_terms) & word_set(str)).any? } if instances.empty?
+      instances = search_for(str) if instances.empty?
 
       return fallback.call "No ISO 3166-1 codes could be found searching with name '#{str}'." if instances.empty?
 
@@ -91,6 +92,19 @@ class IsoCountryCodes # :nodoc:
     end
 
     private
+
+    def search_for(str)
+      candidates = []
+
+      all.select(&:search_terms).each do |code|
+        count = (word_set("#{code.name} #{code.search_terms}") & word_set(str)).count
+        candidates << [code, count] if count > 0
+      end
+      candidates.sort do |a, b|
+        b.last <=> a.last
+      end.map(&:first)
+    end
+
     def word_set(str)
       str.to_s.upcase.split(/\W/).reject(&:empty?).to_set
     end

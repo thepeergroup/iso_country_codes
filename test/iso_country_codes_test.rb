@@ -137,6 +137,7 @@ class TestIsoCountryCodes < Test::Unit::TestCase
       "Côte d'Ivoire", # Y          N
       "Cote d’Ivoire", # N          Y
       "Cote d'Ivoire", # N          N
+      "COTE D'IVOIRE",
 
       "Ivory Coast",   # Anglicized
     ].each do |variant|
@@ -147,10 +148,27 @@ class TestIsoCountryCodes < Test::Unit::TestCase
     end
   end
 
+  def test_search_saints
+    assert_equal(
+      IsoCountryCodes::Code::LCA.instance,
+      IsoCountryCodes.search_by_name('St. Lucia').first
+    )
+
+    assert_equal(
+      IsoCountryCodes::Code::KNA.instance,
+      IsoCountryCodes.search_by_name('St Kitts').first
+    )
+
+    assert_equal(
+      IsoCountryCodes::Code::VCT.instance,
+      IsoCountryCodes.search_by_name('& Grenadines').first
+    )
+  end
+
   def test_recent_name_change_eswatini
     assert_equal(
-      [IsoCountryCodes::Code::SWZ.instance],
-      IsoCountryCodes.search_by_name("Swaziland")
+      IsoCountryCodes::Code::SWZ.instance,
+      IsoCountryCodes.search_by_name("Swaziland").first
     )
   end
 
